@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Button, TouchableOpacity } from 'react-native';
 import { styles } from './styles/styles';
 import { observer } from 'mobx-react';
+import UserStore from './mobxStore/UserStore'
 // import PropTypes from 'prop-types'
 
 const Detail = observer((props) =>  {
@@ -48,6 +49,35 @@ const Detail = observer((props) =>  {
           android:
             <TouchableOpacity
               onPress={() => props.navigation.navigate('Feed', { data: "We have new data!" })}>
+              <Text style={styles.androidButtonText}>Pass Data Back</Text>
+            </TouchableOpacity>
+        })
+      }
+      <Text>{UserStore.count}</Text>
+      {
+        Platform.select({
+          ios:
+            <Button
+              title='tang count'
+              onPress={() => UserStore.updateCount(1)}
+            />,
+          android:
+            <TouchableOpacity
+            onPress={() => UserStore.count += 1}>
+              <Text style={styles.androidButtonText}>Pass Data Back</Text>
+            </TouchableOpacity>
+        })
+      }
+      {
+        Platform.select({
+          ios:
+            <Button
+              title='giam count'
+              onPress={() => UserStore.updateCount(-1)}
+            />,
+          android:
+            <TouchableOpacity
+            onPress={() => UserStore.count -= 1}>
               <Text style={styles.androidButtonText}>Pass Data Back</Text>
             </TouchableOpacity>
         })
