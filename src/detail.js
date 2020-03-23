@@ -63,7 +63,7 @@ const Detail = observer((props) =>  {
             />,
           android:
             <TouchableOpacity
-            onPress={() => UserStore.count += 1}>
+            onPress={() => UserStore.updateCount(1)}>
               <Text style={styles.androidButtonText}>Pass Data Back</Text>
             </TouchableOpacity>
         })
@@ -77,7 +77,7 @@ const Detail = observer((props) =>  {
             />,
           android:
             <TouchableOpacity
-            onPress={() => UserStore.count -= 1}>
+            onPress={() => UserStore.updateCount(-1)}>
               <Text style={styles.androidButtonText}>Pass Data Back</Text>
             </TouchableOpacity>
         })
